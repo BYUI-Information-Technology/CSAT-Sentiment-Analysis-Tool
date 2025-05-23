@@ -151,28 +151,11 @@ This application uses official BYU-Idaho brand colors and styling:
 
 ---
 
-## 📞 Support & Help
-
-### For BYU-Idaho Employees
-
-- **Internal Help Desk**: Contact IT Services for technical support
-- **Training Materials**: Available through internal training resources
-- **Documentation**: Comprehensive guides included with installation
-
-### For IT Administrators
-
-- **Deployment Guide**: See `DISTRIBUTION.md` for enterprise deployment
-- **Network Requirements**: Outbound HTTPS for initial model download
-- **Port Requirements**: Application runs on port 5001 locally
-
----
-
 ## 🔄 Updates & Maintenance
 
 ### Automatic Updates
 
 - The AI model updates automatically as needed
-- Application updates available through GitHub releases
 
 ### Manual Updates
 
@@ -210,27 +193,22 @@ This application uses official BYU-Idaho brand colors and styling:
 
 ---
 
-## 📄 License & Compliance
+## 📄 Compliance
 
 This tool is developed for internal BYU-Idaho use and complies with:
 
-- Educational data privacy requirements
+- University [AI Usage & Data Guide](https://www.byui.edu/genai/privacy)
 - University IT security policies
-- Open source software licensing
 
 ---
 
 ## 🤝 Contributing
 
-This is an internal BYU-Idaho project. For contributions or improvements:
-
-1. Contact the IT Development team
-2. Submit issues through internal channels
-3. Follow university development guidelines
+This is an internal BYU-Idaho project. Contributions are welcomed internally.
 
 ---
 
 <div align="center">
-  <strong>Developed for BYU-Idaho | Customer Satisfaction & Survey Analysis</strong><br>
-  <em>Empowering data-driven decisions through intelligent sentiment analysis</em>
+  <strong>Developed for BYU-Idaho | AI Engineering</strong><br>
+  <em>Empowering data-driven decisions through intelligent, privacy-focused AI solutions</em>
 </div>
