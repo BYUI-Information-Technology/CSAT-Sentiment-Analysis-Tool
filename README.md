@@ -1,276 +1,245 @@
-# 🤖 Sentiment Analysis Application
+# BYU-Idaho Sentiment Analysis Tool
 
-A powerful, user-friendly desktop application for analyzing sentiment in Excel data using state-of-the-art AI models.
+<div align="center">
+  <img src="https://www.byui.edu/prebuilt/angry-inch/images/byui-logo.png" alt="BYU-Idaho" width="200"/>
+  
+  **Professional Sentiment Analysis for Customer Satisfaction Surveys**
+  
+  *A comprehensive web-based application for BYU-Idaho employees to analyze customer feedback and satisfaction surveys*
+</div>
 
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+---
+
+## 📋 Overview
+
+The BYU-Idaho Sentiment Analysis Tool is an enterprise-grade web application designed specifically for BYU-Idaho employees to analyze customer satisfaction surveys, feedback forms, and other text-based responses. This tool provides professional-grade sentiment analysis with interactive visualizations and comprehensive reporting capabilities.
+
+### 🎯 **Primary Use Cases**
+
+- **Customer Satisfaction Surveys** - Analyze student, parent, and stakeholder feedback
+- **Course Evaluations** - Understand sentiment in student course feedback
+- **Employee Feedback** - Process internal survey responses
+- **Event Feedback** - Analyze satisfaction from university events and programs
+- **General Text Analysis** - Any text-based feedback or survey responses
+
+---
 
 ## ✨ Features
 
-- 🧠 **AI-Powered Analysis** - Uses RoBERTa model for accurate sentiment detection
-- 🌐 **Beautiful Web Interface** - Modern, responsive design with drag-and-drop file upload
-- 📊 **Rich Visualizations** - Interactive charts and graphs for data insights
-- 📈 **Comprehensive Analytics** - Confidence scores, statistics, and detailed breakdowns
-- 💾 **Export Results** - Download analyzed data with sentiment labels and confidence scores
-- 🖥️ **Cross-Platform** - Available as standalone executables for Windows and macOS
-- 🚀 **Easy to Use** - No technical knowledge required
+### 🔍 **Intelligent Analysis**
 
-## 🎯 Quick Start
+- **Interactive Column Selection** - Choose any column from your Excel file for analysis
+- **State-of-the-Art AI** - Uses RoBERTa model trained specifically for sentiment analysis
+- **Flexible Input** - Supports various Excel formats (.xlsx, .xls)
+- **Real-time Preview** - See your data before processing
+
+### 📊 **Professional Reporting**
+
+- **Multiple Visualizations** - Bar charts, pie charts, confidence analysis
+- **Statistical Insights** - Comprehensive metrics and confidence scores
+- **BYUI Branded** - Professional styling with official university colors
+- **Export Ready** - Download analyzed results in Excel format
+
+### 🗄️ **Data Management**
+
+- **History Tracking** - View all previous analysis runs
+- **Secure Storage** - Local SQLite database for analysis history
+- **Easy Retrieval** - Download previous results anytime
+- **Data Privacy** - All processing happens locally on your machine
+
+### 🎨 **User Experience**
+
+- **Intuitive Interface** - Web-based, easy-to-use design
+- **Drag & Drop Upload** - Simple file upload process
+- **Responsive Design** - Works on desktop, tablet, and mobile
+- **No Technical Skills Required** - Point-and-click operation
+
+---
+
+## 🚀 Quick Start for BYU-Idaho Employees
 
 ### Option 1: Use Pre-built Executable (Recommended)
 
-1. **Download the executable** for your platform
-2. **Windows**: Double-click `start_app.bat`
-3. **macOS**: Double-click `start_app.sh`
-4. **Open browser** and go to `http://localhost:5001`
+1. **Download** the latest release from the GitHub releases page
+2. **Extract** the downloaded file to your desired location
+3. **Run** the application:
+   - Windows: Double-click `start_app.bat`
+   - macOS: Double-click `start_app.sh`
+4. **Open** your web browser to `http://localhost:5001`
+5. **Upload** your Excel survey file and start analyzing!
 
-### Option 2: Run from Source
+### Option 2: Run from Source (For IT/Developers)
 
 ```bash
-# 1. Clone or download the project
-git clone <repository-url>
+# Clone the repository
+git clone [your-org-repo-url]
 cd sentiment-analysis
 
-# 2. Install dependencies
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
 
-# 3. Run the application
+# Run the application
 python app.py
-
-# 4. Open browser to http://localhost:5001
 ```
 
-### Option 3: Build Your Own Executable
+---
 
-```bash
-# Install and build
-pip install -r requirements.txt
-python build_executable.py
-```
+## 📖 User Guide
 
-## 📋 Requirements
+### Step 1: Upload Your Survey Data
 
-### For Excel Files:
+- Click **"Choose File"** or drag your Excel file to the upload area
+- Supported formats: `.xlsx`, `.xls`
+- Maximum file size: 16MB
 
-- ✅ File format: `.xlsx` or `.xls`
-- ✅ Contains text data for sentiment analysis
-- ✅ Maximum file size: 16MB
-- ✅ Any number of columns supported - you'll select which one to analyze
+### Step 2: Preview and Select Column
 
-### Interactive Column Selection:
+- Review your data in the preview table
+- Select the column containing text responses you want to analyze
+- Common column names: "Comments", "Feedback", "Response", "Why satisfied text area"
 
-The application now features an **interactive preview system** where you can:
+### Step 3: Run Analysis
 
-- 📊 Preview your Excel data before analysis
-- 🎯 Select which column contains the text to analyze
-- 👀 See sample values from each column
-- ✨ Highlight the selected column for easy identification
+- Click **"Analyze Sentiment"** to start processing
+- The AI model will analyze each response for sentiment (Positive, Negative, Neutral)
+- Processing time depends on the number of responses
 
-### Example Excel Structure:
+### Step 4: Review Results
 
-| Response         | Ticket ID | Ticket              | Survey Completed By | Survey Completed | Requested  | Satisfied Range | Why satisfied text area      |
-| ---------------- | --------- | ------------------- | ------------------- | ---------------- | ---------- | --------------- | ---------------------------- |
-| Example response | 12345     | Support Request     | John Doe            | 2024-01-15       | 2024-01-10 | Very Satisfied  | "Great service! Love it!"    |
-| Example response | 12346     | Technical Issue     | Jane Smith          | 2024-01-16       | 2024-01-12 | Dissatisfied    | "Poor quality, disappointed" |
-| Example response | 12347     | Information Request | Bob Johnson         | 2024-01-17       | 2024-01-14 | Neutral         | "It's okay, nothing special" |
+- View comprehensive charts and statistics
+- Understand sentiment distribution across your responses
+- See confidence scores for each analysis
 
-## 🎨 What You Get
+### Step 5: Download and Share
 
-### 📊 Visualizations
+- Download the complete Excel file with sentiment scores
+- Share insights with your team or stakeholders
+- Access previous analyses from the History page
 
-- **Sentiment Distribution Chart** - Bar chart showing count and percentages
-- **Sentiment Pie Chart** - Proportional view of sentiment breakdown
-- **Confidence Analysis Dashboard** - Multi-panel analysis of prediction confidence
-- **Interactive Statistics** - Key insights and trends
+---
 
-### 📈 Data Analysis
+## 🔧 System Requirements
 
-- **Sentiment Labels**: POSITIVE, NEGATIVE, NEUTRAL
-- **Confidence Scores**: 0.0 to 1.0 (higher = more confident)
-- **Statistical Summary**: Averages, distributions, and breakdowns
-- **Response Length Analysis**: Correlation between text length and sentiment
+### Minimum Requirements
 
-### 💾 Export Options
+- **Operating System**: Windows 10+, macOS 10.14+, or Ubuntu 18.04+
+- **Memory**: 4GB RAM (2GB minimum)
+- **Storage**: 2GB free space
+- **Internet**: Required for initial setup (model download)
 
-- **Enhanced Excel File** - Original data + sentiment columns
-- **Printable Reports** - Professional formatting for presentations
-- **High-Resolution Charts** - Perfect for reports and presentations
+### Recommended for Large Surveys
 
-## 🛠️ Building Executables
+- **Memory**: 8GB+ RAM
+- **Processor**: Multi-core CPU
+- **Storage**: 5GB+ free space
 
-The application can be packaged as standalone executables for easy distribution:
+---
 
-### Windows (.exe)
+## 🛡️ Data Privacy & Security
 
-```bash
-python build_executable.py
-# Creates: dist/SentimentAnalyzer/SentimentAnalyzer.exe
-```
+- **Local Processing**: All data stays on your machine
+- **No Cloud Upload**: Survey data never leaves your computer
+- **Secure Storage**: Local SQLite database for history
+- **FERPA Compliant**: Suitable for educational data analysis
+- **No External APIs**: Model runs entirely offline after initial download
 
-### macOS (.app)
+---
 
-```bash
-python build_executable.py
-# Creates: dist/SentimentAnalyzer.app
-```
+## 🎨 BYUI Branding
 
-### Build Features:
+This application uses official BYU-Idaho brand colors and styling:
 
-- ✅ **Self-contained** - No Python installation required
-- ✅ **Auto-downloads AI model** on first run
-- ✅ **Launcher scripts** for easy startup
-- ✅ **Complete documentation** included
+- **Primary Blue**: #006EB6
+- **Secondary Blue**: #214491
+- **Accent Blue**: #4F9ACF
+- **Light Blue**: #A0D4ED
 
-## 🔧 Technical Details
+---
+
+## 📞 Support & Help
+
+### For BYU-Idaho Employees
+
+- **Internal Help Desk**: Contact IT Services for technical support
+- **Training Materials**: Available through internal training resources
+- **Documentation**: Comprehensive guides included with installation
+
+### For IT Administrators
+
+- **Deployment Guide**: See `DISTRIBUTION.md` for enterprise deployment
+- **Network Requirements**: Outbound HTTPS for initial model download
+- **Port Requirements**: Application runs on port 5001 locally
+
+---
+
+## 🔄 Updates & Maintenance
+
+### Automatic Updates
+
+- The AI model updates automatically as needed
+- Application updates available through GitHub releases
+
+### Manual Updates
+
+- Download latest release from GitHub
+- Replace existing installation
+- All data and history preserved
+
+---
+
+## 📋 Technical Specifications
 
 ### AI Model
 
 - **Model**: `cardiffnlp/twitter-roberta-base-sentiment-latest`
-- **Type**: RoBERTa (Robustly Optimized BERT Pretraining Approach)
-- **Training**: Optimized for social media and general text sentiment
-- **Performance**: State-of-the-art accuracy for sentiment classification
+- **Type**: RoBERTa-based transformer
+- **Languages**: English
+- **Output**: Positive, Negative, Neutral with confidence scores
 
 ### Technology Stack
 
-- **Backend**: Flask (Python web framework)
-- **AI/ML**: Transformers (Hugging Face), PyTorch
-- **Data Processing**: Pandas, NumPy
-- **Visualizations**: Matplotlib, Seaborn
-- **File Handling**: OpenPyXL (Excel), Werkzeug (file uploads)
-- **Frontend**: Bootstrap 5, HTML5, JavaScript
-
-### Performance
-
-- **Processing Speed**: ~1-5 responses per second (depending on hardware)
-- **Memory Usage**: ~2-4GB RAM (includes model loading)
-- **File Size Limits**: 16MB max upload, ~10,000 responses recommended
-- **Supported Platforms**: Windows 10+, macOS 10.14+, Linux (Ubuntu 18.04+)
-
-## 🚀 Usage Guide
-
-### Step 1: Upload File
-
-- Drag and drop Excel file or click to browse
-- Supported formats: .xlsx, .xls
-- Any Excel file with text data is supported
-
-### Step 2: Preview & Column Selection
-
-- View an interactive preview of your spreadsheet
-- Select which column contains the text to analyze
-- See sample values and column highlighting
-- Confirm your selection before proceeding
-
-### Step 3: Analysis
-
-- Application automatically processes each response
-- Progress shown in real-time
-- AI model downloads on first use (may take a few minutes)
-
-### Step 4: Results
-
-- View comprehensive dashboard with insights
-- Examine visualizations and statistics
-- Download enhanced Excel file with results
-
-### Step 5: Export
-
-- Download Excel file with sentiment labels and confidence scores
-- Print professional report directly from browser
-- Save charts as high-resolution images
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-**Port already in use**
-
-```bash
-# Solution: The app now uses port 5001 by default
-# If port 5001 is also in use, modify port in app.py: app.run(port=5002)
-# On macOS, port 5000 is used by AirPlay Receiver service
-```
-
-**Model download fails**
-
-```bash
-# Solution: Check internet connection
-# Restart application - model will retry download
-```
-
-**Excel file not recognized**
-
-```bash
-# Solution: Upload any Excel file (.xlsx or .xls)
-# Use the preview to select which column contains text
-# Verify file isn't corrupted
-```
-
-**Memory errors with large files**
-
-```bash
-# Solution: Split large files into smaller chunks
-# Recommend <10,000 responses per file
-```
-
-### Performance Tips
-
-- 💡 **Smaller files process faster** - Consider splitting large datasets
-- 💡 **First run slower** - AI model downloads on initial use
-- 💡 **Close other applications** - Free up RAM for better performance
-- 💡 **SSD storage recommended** - Faster file I/O operations
-
-## 📝 Development
-
-### Project Structure
-
-```
-sentiment-analysis/
-├── app.py                 # Main Flask application
-├── templates/             # HTML templates
-│   ├── base.html         # Base template with styling
-│   ├── index.html        # Upload page
-│   └── results.html      # Results dashboard
-├── requirements.txt       # Python dependencies
-├── build_executable.py   # Build script for executables
-├── setup.py              # Package setup configuration
-└── README.md             # This file
-```
-
-### Adding Features
-
-1. **New Analysis Types**: Extend `analyze_sentiment()` function
-2. **Additional Visualizations**: Add to `create_visualizations()`
-3. **Custom Models**: Modify model loading in `load_sentiment_model()`
-4. **UI Enhancements**: Update templates and CSS
-
-### Contributing
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -am 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- **Documentation**: Check this README and included help files
-- **Issues**: Report bugs and request features via GitHub issues
-- **Community**: Join discussions in GitHub Discussions
-- **Email**: Contact support@sentimentanalyzer.com
-
-## 🙏 Acknowledgments
-
-- **Hugging Face** - For the excellent Transformers library and model hosting
-- **Cardiff NLP** - For the sentiment analysis model
-- **Flask Team** - For the robust web framework
-- **Bootstrap** - For the beautiful UI components
+- **Backend**: Python Flask
+- **Frontend**: HTML5, Bootstrap 5, JavaScript
+- **Database**: SQLite
+- **Charts**: Matplotlib, Seaborn
+- **ML Framework**: Hugging Face Transformers
 
 ---
 
-**Made with ❤️ for data analysts, researchers, and businesses who need powerful sentiment analysis tools.**
+## 📚 Documentation
+
+- `README.md` - This overview and user guide
+- `DISTRIBUTION.md` - Deployment and distribution guide
+- `requirements.txt` - Python dependencies
+- `templates/` - Web interface templates
+
+---
+
+## 📄 License & Compliance
+
+This tool is developed for internal BYU-Idaho use and complies with:
+
+- Educational data privacy requirements
+- University IT security policies
+- Open source software licensing
+
+---
+
+## 🤝 Contributing
+
+This is an internal BYU-Idaho project. For contributions or improvements:
+
+1. Contact the IT Development team
+2. Submit issues through internal channels
+3. Follow university development guidelines
+
+---
+
+<div align="center">
+  <strong>Developed for BYU-Idaho | Customer Satisfaction & Survey Analysis</strong><br>
+  <em>Empowering data-driven decisions through intelligent sentiment analysis</em>
+</div>
