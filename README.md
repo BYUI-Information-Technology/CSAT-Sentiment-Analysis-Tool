@@ -1,8 +1,6 @@
 # BYU-Idaho Sentiment Analysis Tool
 
 <div align="center">
-  <img src="https://www.byui.edu/prebuilt/angry-inch/images/byui-logo.png" alt="BYU-Idaho" width="200"/>
-  
   **Professional Sentiment Analysis for Customer Satisfaction Surveys**
   
   *A comprehensive web-based application for BYU-Idaho employees to analyze customer feedback and satisfaction surveys*
@@ -58,21 +56,11 @@ The BYU-Idaho Sentiment Analysis Tool is an enterprise-grade web application des
 
 ## 🚀 Quick Start for BYU-Idaho Employees
 
-### Option 1: Use Pre-built Executable (Recommended)
-
-1. **Download** the latest release from the GitHub releases page
-2. **Extract** the downloaded file to your desired location
-3. **Run** the application:
-   - Windows: Double-click `start_app.bat`
-   - macOS: Double-click `start_app.sh`
-4. **Open** your web browser to `http://localhost:5001`
-5. **Upload** your Excel survey file and start analyzing!
-
-### Option 2: Run from Source (For IT/Developers)
+### Run from Source (For IT/Developers)
 
 ```bash
 # Clone the repository
-git clone [your-org-repo-url]
+git clone https://github.com/BYUI-Information-Technology/CSAT-Sentiment-Analysis-Tool.git
 cd sentiment-analysis
 
 # Create virtual environment
@@ -84,7 +72,10 @@ pip install -r requirements.txt
 
 # Run the application
 python app.py
+
 ```
+
+Then **Open** your web browser to `http://localhost:5001`
 
 ---
 
