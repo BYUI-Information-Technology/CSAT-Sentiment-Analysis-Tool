@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}BYUI Sentiment Analysis - View Analysis{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <!-- Header -->
+        <div class="card mb-4">
+            <div class="card-header text-center">
+                <h2 class="mb-0">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Analysis Details
+                </h2>
+                <p class="mb-0 mt-2 opacity-75">
+                    {{ run_data.original_filename }} - {{ run_data.upload_date.split('T')[0] if 'T' in
+                    run_data.upload_date else run_data.upload_date.split(' ')[0] }}
+                </p>
+            </div>
+            <div class="card-body text-center">
+                <a href="{{ url_for('download_analysis', run_id=run_data.id) }}" class="btn btn-success btn-lg me-3">
+                    <i class="fas fa-download me-2"></i>
+                    Download Results
+                </a>
+                <a href="{{ url_for('history') }}" class="btn btn-info btn-lg">
+                    <i class="fas fa-arrow-left me-2"></i>
+                    Back to History
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Analysis Info -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Analysis Information
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Original File:</strong></td>
+                                <td>{{ run_data.original_filename }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analysis Date:</strong></td>
+                                <td>{{ run_data.upload_date }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Responses:</strong></td>
+                                <td>{{ run_data.total_responses }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Processing Time:</strong></td>
+                                <td>{{ "%.2f"|format(run_data.processing_time) }} seconds</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Average Confidence:</strong></td>
+                                <td>{{ "%.3f"|format(run_data.avg_confidence) }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High Confidence (≥0.8):</strong></td>
+                                <td>{{ run_data.high_confidence_count }} ({{
+                                    "%.1f"|format(run_data.high_confidence_percentage) }}%)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Insights Row -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    Key Insights
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Total Responses -->
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stats-card text-center">
+                            <div class="stat-value">{{ insights.total_responses }}</div>
+                            <div class="stat-label">Total Responses</div>
+                        </div>
+                    </div>
+
+                    <!-- Most Common Sentiment -->
+                    {% if insights.most_common_sentiment %}
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stats-card text-center">
+                            <div class="stat-value">{{ insights.most_common_sentiment.sentiment }}</div>
+                            <div class="stat-label">Most Common</div>
+                            <div class="small text-muted">{{ insights.most_common_sentiment.percentage }}%</div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Average Confidence -->
+                    {% if insights.confidence_stats %}
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stats-card text-center">
+                            <div class="stat-value">{{ insights.confidence_stats.mean if insights.confidence_stats.mean
+                                else run_data.avg_confidence }}</div>
+                            <div class="stat-label">Avg Confidence</div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- High Confidence -->
+                    {% if insights.high_confidence %}
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="stats-card text-center">
+                            <div class="stat-value">{{ insights.high_confidence.percentage }}%</div>
+                            <div class="stat-label">High Confidence</div>
+                            <div class="small text-muted">(≥0.8)</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Visualizations Row -->
+<div class="row">
+    <!-- Sentiment Distribution -->
+    {% if plots.sentiment_distribution %}
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Sentiment Distribution
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <img src="data:image/png;base64,{{ plots.sentiment_distribution }}"
+                        alt="Sentiment Distribution Chart" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Sentiment Pie Chart -->
+    {% if plots.sentiment_pie %}
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Sentiment Proportions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <img src="data:image/png;base64,{{ plots.sentiment_pie }}" alt="Sentiment Pie Chart"
+                        class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Confidence Analysis -->
+{% if plots.confidence_analysis %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>
+                    Confidence Analysis Dashboard
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <img src="data:image/png;base64,{{ plots.confidence_analysis }}" alt="Confidence Analysis Dashboard"
+                        class="img-fluid">
+                </div>
+                <p class="text-muted text-center mt-3">
+                    <i class="fas fa-info-circle me-2"></i>
+                    This dashboard shows confidence score distribution, confidence by sentiment,
+                    confidence vs response length, and confidence level breakdown.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Sentiment Distribution Table -->
+{% if insights.sentiment_distribution %}
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-table me-2"></i>
+                    Sentiment Breakdown
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Sentiment</th>
+                                <th>Count</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sentiment, count in insights.sentiment_distribution.items() %}
+                            <tr>
+                                <td>
+                                    {% if sentiment == 'POSITIVE' %}
+                                    <i class="fas fa-smile text-success me-2"></i>
+                                    {% elif sentiment == 'NEGATIVE' %}
+                                    <i class="fas fa-frown text-danger me-2"></i>
+                                    {% elif sentiment == 'NEUTRAL' %}
+                                    <i class="fas fa-meh text-warning me-2"></i>
+                                    {% else %}
+                                    <i class="fas fa-question text-muted me-2"></i>
+                                    {% endif %}
+                                    {{ sentiment }}
+                                </td>
+                                <td>{{ count }}</td>
+                                <td>{{ "%.1f"|format((count / insights.total_responses) * 100) }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-cogs me-2"></i>
+                    Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('download_analysis', run_id=run_data.id) }}" class="btn btn-success">
+                        <i class="fas fa-download me-2"></i>
+                        Download Results
+                    </a>
+                    <a href="{{ url_for('history') }}" class="btn btn-primary">
+                        <i class="fas fa-history me-2"></i>
+                        View All History
+                    </a>
+                    <a href="{{ url_for('index') }}" class="btn btn-info">
+                        <i class="fas fa-upload me-2"></i>
+                        New Analysis
+                    </a>
+                    <button class="btn btn-secondary" onclick="window.print()">
+                        <i class="fas fa-print me-2"></i>
+                        Print This Report
+                    </button>
+                </div>
+
+                <div class="mt-4">
+                    <h6 class="text-primary">
+                        <i class="fas fa-info-circle me-2"></i>
+                        About This Analysis
+                    </h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li><i class="fas fa-check me-2"></i>Model: RoBERTa
+                            (cardiffnlp/twitter-roberta-base-sentiment-latest)</li>
+                        <li><i class="fas fa-check me-2"></i>Analysis ID: {{ run_data.id }}</li>
+                        <li><i class="fas fa-check me-2"></i>Processing time: {{ "%.2f"|format(run_data.processing_time)
+                            }}s</li>
+                        <li><i class="fas fa-check me-2"></i>Confidence scores range from 0.0 to 1.0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Print styles
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add print styles
+        const printStyles = `
+        @media print {
+            .btn, .navbar, footer { display: none !important; }
+            .card { break-inside: avoid; }
+            body { background: white !important; }
+        }
+    `;
+
+        const style = document.createElement('style');
+        style.textContent = printStyles;
+        document.head.appendChild(style);
+    });
+</script>
+{% endblock %}
